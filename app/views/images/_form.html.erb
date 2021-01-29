@@ -1,0 +1,69 @@
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+
+<%= form_with(model: image, local: true) do |form| %>
+  <% if image.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(image.errors.count, "error") %> prohibited this image from being saved:</h2>
+
+      <ul>
+        <% image.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label "Upload Image" %>
+    <%= form.file_field :image%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :meal_category %>
+    <%= form.select :meal_category, options_for_select(["Breakfast", "Lunch/Dinner", "Dessert"]), class: "form-control"%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_area :title, class: "form-control"%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: "form-control"%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :instructions %>
+    <%= form.text_area :instructions, class: "form-control"%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :ingredients %>
+    <%= form.text_area :ingredients, class: "form-control"%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label "Cooking Time (mins)" %>
+    <%= form.number_field :cookingtime, class: "form-control"%>
+  </div>
+
+   <div class="field form-group">
+    <%= form.number_field :user_id, id: :image_user_id, class: 'form-control', value: current_user.id, type: :hidden %>
+  </div>
+
+<div class="row">
+  <div class="actions">
+    <%= form.submit "Post", class: "btn btn-primary"%>
+  </div>
+  <div>
+    <%= link_to 'Back', images_path, class: "btn float-right btn-primary"%>
+  </div>
+<% end %>
+</div>
+
+</div>
+</div>
+
+    <%= render 'images/footer' %>

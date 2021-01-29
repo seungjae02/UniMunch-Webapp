@@ -1,0 +1,14 @@
+<div class="row">
+        <div class="col-sm-12">
+            <div class="jumbotron text-center">
+                <h1 class="black_text"><%= params[:username]%>'s Munches</h1> <br>
+                  <%= link_to "What's Your Munch?", new_image_path, class: "btn btn-info"%>
+
+                 
+            </div>
+          </div>
+    
+      <%= render 'images/foods'%>
+    </div>
+
+    <%= render 'images/footer' %>

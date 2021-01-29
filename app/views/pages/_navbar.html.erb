@@ -1,0 +1,28 @@
+<nav class="navbar navbar-dark bg-dark">
+    <%= link_to "UniMunch", root_path, class: "navbar-brand"%>
+
+    <div class="navbar-nav mr-auto">
+        <%= link_to "Recent", images_path, class:"nav-link"%>
+    </div>
+
+        <% if user_signed_in? %>
+            <form class="form-inline">
+                <%= link_to "Upload", new_image_path, class: 'btn btn-outline-info' %>
+            <div style="padding-left: 10px;">
+                <%= link_to current_user.full_name, profile_path(current_user.username), class: 'btn btn-outline-light'%>
+            </div>
+            <div style="padding-left: 10px;">
+                <%= link_to "Log Out", cancel_user_registration_path, class: 'btn btn-outline-danger', method: :delete%>
+            </div>
+        <% else %>
+            <form class="form-inline">
+                <%= link_to 'Upload', new_user_session_path, class: 'btn btn-outline-info' %>
+            <div style="padding-left: 10px;">
+                <%= link_to "Sign In", new_user_session_path, class: 'btn btn-outline-success' %>
+            </div>
+            <div style="padding-left: 10px;">
+                <%= link_to "Create Account", new_user_registration_path, class: 'btn btn-outline-primary'%>
+            </div>
+        <%end%>
+  </form>
+</nav>

@@ -1,0 +1,27 @@
+      <% @images.each do |image| %>
+            <% if image.image.attached? %>
+                <div class="col-sm-6 col-md-4">
+                    <a href= <%= image_path(image.id) %>>
+                    
+                        <figure style="background-image: url(<%= rails_blob_url(image.image) %>)">
+                            <div class="date"><span class="card-date-day"><%= image.created_at.day%></span>
+                            <span class="card-date-month"><%= image.get_month%></span></div>
+                        </figure>
+
+                            <div class="container p-3 my-3 bg-light">
+                                <figcaption>
+                                    <div class="card-deck">
+                                        <div class="card-body">
+                                            <h4 class="card-title"><%=image.title%></h4>
+                                            <p class="border-top">
+                                                <p class="card-text"><%=image.description%></p>
+                                            </p>
+                                            <p class="card-text"><small class="text-muted"><%= time_ago_in_words image.created_at %> ago</small></p>
+                                        </div>
+                                    </div>
+                            </figcaption>
+                        </div>
+                    </a>
+                </div>
+            <%end%>
+        <% end %>
