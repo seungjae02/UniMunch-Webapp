@@ -13,6 +13,10 @@
                                     <div class="card-deck">
                                         <div class="card-body">
                                             <h4 class="card-title"><%=image.title%></h4>
+                                            <p class="lead">
+                                                by
+                                                <%= link_to image.user.username, profile_path(image.user.username) %>
+                                                </p>
                                             <p class="border-top">
                                                 <p class="card-text"><%=image.description%></p>
                                             </p>
